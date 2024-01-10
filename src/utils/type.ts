@@ -1,7 +1,7 @@
 
 import type { RouteLocationNormalized, RouteRecord } from "vue-router";
 
-// 0根节点、1系统、2目录、3菜单、4按钮
+// 0 根节点、1 系统、2 目录、3 菜单、4 按钮
 export enum MenuType {
   root = "0",
   app = "1",
@@ -11,9 +11,9 @@ export enum MenuType {
 }
 
 export interface Menu {
-  id: string;       // 权限ID
-  pid?: string;      // App ID
-  name?: string; // 权限名称
+  id: string;           // 权限ID
+  pid?: string;         // App ID
+  name?: string;        // 权限名称
   key: string | RegExp; // 权限唯一标识， 用于判断权限凭证
 }
 

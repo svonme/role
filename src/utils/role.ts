@@ -11,6 +11,10 @@ import type { Menu, RoleCallback, RoleType } from "./type";
 
 
 const menuDb = new DBList<Menu>([], "id", "pid");
+export const clearMenuList = function() {
+  menuDb.clear();
+}
+
 export const setMenuList = function(value: Menu[] | Menu) {
   menuDb.insert(value);
 }
@@ -59,7 +63,7 @@ export const assert = function(role: RoleType, type?: MenuType | MenuType[]): bo
     if (_.isString(value) || _.isFunction(value) || _.isBoolean(value)) {
       status = _assert(value, type);
     } else {
-      const temp = safeGet<RoleType>(value, "meta.roles");
+      const temp = safeGet<RoleType>(value, "meta.roles") || safeGet<RoleType>(value, "meta.role");
       if (temp) {
         status = assert(temp, type);
       }
