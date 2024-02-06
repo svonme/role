@@ -41,6 +41,7 @@ const _assert = function(value: string | boolean | RoleCallback, type?: MenuType
     } else if (data.key && _.isRegExp(data.key)) {
       // 如果路由规则为正则对象
       // 校验是否符合规则
+      data.key.lastIndex = 0;
       status = data.key.test(value as string);
     }
     if (status) {
